@@ -6,20 +6,21 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    # https://stackoverflow.com/a/74633549
-    - name: Fail if branch is not main
-      if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main'
-      run: |
-        echo "This workflow should not be triggered with workflow_dispatch on a branch other than main"
-        exit 1
-    - name: Checkout repository
-      uses: actions/checkout@v4
-    - name: Install tools
-      uses: asdf-vm/actions/install@v2
-    - name: Install dependencies
-      run: bun install
-    - name: Deploy to CF Pages
-      run: bun run pages:deploy
-      env:
-        CLOUDFLARE_ACCOUNT_ID: secrets.CLOUDFLARE_ACCOUNT_ID
-        CLOUDFLARE_API_TOKEN: secrets.CLOUDFLARE_API_TOKEN
+    steps:
+      # https://stackoverflow.com/a/74633549
+      - name: Fail if branch is not main
+        if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main'
+        run: |
+          echo "This workflow should not be triggered with workflow_dispatch on a branch other than main"
+          exit 1
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install tools
+        uses: asdf-vm/actions/install@v2
+      - name: Install dependencies
+        run: bun install
+      - name: Deploy to CF Pages
+        run: bun run pages:deploy
+        env:
+          CLOUDFLARE_ACCOUNT_ID: secrets.CLOUDFLARE_ACCOUNT_ID
+          CLOUDFLARE_API_TOKEN: secrets.CLOUDFLARE_API_TOKEN

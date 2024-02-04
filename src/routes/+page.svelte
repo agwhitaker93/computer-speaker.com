@@ -12,7 +12,7 @@
   <h1>Hello!</h1>
   <div class="header">
     <picture>
-      <img src={header} alt="Header image" />
+      <img src={header} alt="A quiet city road" />
     </picture>
   </div>
 

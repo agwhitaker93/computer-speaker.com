@@ -9,12 +9,25 @@
   <p>Find my music on <a href="https://thinkplumfythoughts.bandcamp.com">Bandcamp</a></p>
 
   <p>
-    In mid 2020, I bought myself an electric drumkit to help stave off boredom, having shelved the
-    instrument when I left home for university.
+    In the before times, I played drums in a couple bands, and dabbled with making electronic music
+    with Ableton Live. But, unfortunately, all of that was shelved when I left home for university.
   </p>
   <p>
-    I also dabble in composing electronic music. I started off using Ableton Live, but since
-    switching my main PC over to Linux, I have been learning how to use Bitwig Studio.
+    However, I, like a lot of people, found myself with more free time near the start of 2020. So I
+    picked up an electric drumkit and have been working my way through some grade books and various
+    Drumeo lessons since then. It's good fun, and provides some much needed catharsis.
+  </p>
+  <p>
+    In 2021, I rembered my Ableton Live license and began composing again. The results of which I've
+    been slowly uploading to my Bandcamp. However, I've recently had to switch over to Bitwig
+    studio, seeing as Ableton doesn't work particularly well on Linux, so my progress has slowed
+    down a fair bit while I learn how to use my new DAW.
+  </p>
+  <p>
+    I decided 2022 would be a good year to become a multi-instrumentalist, and bought a bass guitar.
+    Having only ever played drums, I was missing some context for melodic expression, and bass
+    seemed like a natural companion to learn. I've similarly been making my way through some grade
+    books.
   </p>
 
   <h1>Albums</h1>

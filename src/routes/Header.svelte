@@ -4,7 +4,6 @@
   import github from '$lib/images/github.svg'
 
   const pageList = [
-    { name: 'About', path: '/about' },
     { name: 'Sverdle', path: '/sverdle' },
     { name: 'Music', path: '/music' },
     { name: 'Photos', path: '/photos' },
@@ -14,9 +13,11 @@
 
 <header>
   <div class="corner">
-    <a href="https://kit.svelte.dev">
-      <img src={logo} alt="SvelteKit" />
-    </a>
+    <!--
+       <a href="https://kit.svelte.dev">
+         <img src={logo} alt="SvelteKit" />
+       </a>
+    -->
   </div>
 
   <nav>
@@ -27,7 +28,7 @@
       <li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
         <a href="/">Home</a>
       </li>
-      {#each pageList as { name, path }}
+      {#each pageList as { name, path } (name)}
         <li aria-current={$page.url.pathname.startsWith(path) ? 'page' : undefined}>
           <a href={path}>{name}</a>
         </li>

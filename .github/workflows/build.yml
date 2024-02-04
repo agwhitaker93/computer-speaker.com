@@ -18,6 +18,6 @@ jobs:
       - name: Run svelte checks
         run: bun run check
       - name: Set Playwright up
-        run: bash ./node_modules/.bin/playwright install
+        run: bunx playwright install
       - name: Run tests
         run: bun run test

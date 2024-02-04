@@ -13,13 +13,11 @@ jobs:
         uses: asdf-vm/actions/install@v2
       - name: Install dependencies
         run: bun install
-      # temporarily disabled, pending update in eslint-plugin-svelte
-      # https://github.com/sveltejs/eslint-plugin-svelte/issues/652
-      #- name: Lint code
-      #  run: bun run lint
+      - name: Lint code
+        run: bun run lint
       - name: Run svelte checks
         run: bun run check
       - name: Set Playwright up
-        run: bunx playwright install
+        run: bash ./node_modules/.bin/playwright install
       - name: Run tests
         run: bun run test

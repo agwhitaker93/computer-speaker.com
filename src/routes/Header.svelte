@@ -2,6 +2,14 @@
   import { page } from '$app/stores'
   import logo from '$lib/images/svelte-logo.svg'
   import github from '$lib/images/github.svg'
+
+  const pageList = [
+    { name: 'About', path: '/about' },
+    { name: 'Sverdle', path: '/sverdle' },
+    { name: 'Music', path: '/music' },
+    { name: 'Photos', path: '/photos' },
+    { name: 'Contact', path: '/contact' }
+  ]
 </script>
 
 <header>
@@ -19,12 +27,11 @@
       <li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
         <a href="/">Home</a>
       </li>
-      <li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-        <a href="/about">About</a>
-      </li>
-      <li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-        <a href="/sverdle">Sverdle</a>
-      </li>
+      {#each pageList as { name, path }}
+        <li aria-current={$page.url.pathname.startsWith(path) ? 'page' : undefined}>
+          <a href={path}>{name}</a>
+        </li>
+      {/each}
     </ul>
     <svg viewBox="0 0 2 3" aria-hidden="true">
       <path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
@@ -32,8 +39,8 @@
   </nav>
 
   <div class="corner">
-    <a href="https://github.com/sveltejs/kit">
-      <img src={github} alt="GitHub" />
+    <a href="https://github.com/agwhitaker93">
+      <img src={github} alt="My GitHub Profile" />
     </a>
   </div>
 </header>

@@ -1,11 +1,11 @@
 <script>
-  import '../app.pcss'
   import Header from './Header.svelte'
   import './styles.css'
+  import '../app.pcss'
 </script>
 
 <div class="app">
-  <Header/ >
+  <Header />
 
   <main>
     <slot />

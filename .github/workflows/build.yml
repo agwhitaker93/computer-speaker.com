@@ -4,44 +4,15 @@ on:
   push:
 
 jobs:
-  lint:
+  build:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Set variables
-        id: vars
-        run: |
-          tool_versions=`cat ./.tool-versions`
-          bun_version=`echo $tool_versions | awk '{print $2}'`
-      - name: Setup bun
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: ${{ steps.vars.outputs.bun_version }}
-      - name: Install dependencies
-        run: bun install
-      - name: Lint code
-        run: bun run lint
-  check:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Set variables
-        id: vars
-        run: |
-          tool_versions=`cat ./.tool-versions`
-          bun_version=`echo $tool_versions | awk '{print $2}'`
-      - name: Setup bun
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: ${{ steps.vars.outputs.bun_version }}
-      - name: Install dependencies
-        run: bun install
-      - name: Run svelte checks
-        run: bun run check
-  test:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        job:
+          - lint
+          - check
+          - test
+          - build
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -57,12 +28,14 @@ jobs:
       - name: Install dependencies
         run: bun install
       - name: Cache stuff
+        if: matrix.job === test
         uses: actions/cache@v3
         with:
           key: build-test-${{ hashFiles('bun.lockb') }}
           path: |
             ~/.cache
       - name: Set Playwright up
+        if: matrix.job === test
         run: bunx playwright install
-      - name: Run tests
-        run: bun run test
+      - name: Run build check
+        run: bun run {{ matrix.job }}

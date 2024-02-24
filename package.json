@@ -13,6 +13,7 @@
     "test:integration": "playwright test",
     "test:unit": "vitest",
     "pages:preview": "bun run build && wrangler pages dev --compatibility-date=2024-01-29 .svelte-kit/cloudflare",
+    "pages:deploy-branch": "bun run build && wrangler pages deploy .svelte-kit/cloudflare --project-name computer-speaker --branch $BRANCH",
     "pages:deploy": "bun run build && wrangler pages deploy .svelte-kit/cloudflare --project-name computer-speaker --branch main"
   },
   "devDependencies": {

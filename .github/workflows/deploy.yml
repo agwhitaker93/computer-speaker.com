@@ -20,7 +20,15 @@ jobs:
           bun-version: ${{ steps.vars.outputs.bun_version }}
       - name: Install dependencies
         run: bun install
+      - name: Deploy branch to CF Pages
+        if: github.ref != "main"
+        run: bun run pages:preview
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          BRANCH: ${{ github.ref }}
       - name: Deploy to CF Pages
+        if: github.ref == "main"
         run: bun run pages:deploy
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

@@ -38,4 +38,4 @@ jobs:
         if: matrix.job == "test"
         run: bunx playwright install
       - name: Run build check
-        run: bun run {{ matrix.job }}
+        run: bun run ${{ matrix.job }}

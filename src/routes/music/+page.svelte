@@ -1,12 +1,22 @@
+<script lang="ts">
+  import IconAnchor from '../components/IconAnchor.svelte'
+</script>
+
 <svelte:head>
   <title>Music</title>
   <meta name="description" content="My music" />
 </svelte:head>
 
-<div class="text-column">
+<div class="flex flex-1 flex-col items-center justify-center">
   <h1>I make music</h1>
 
-  <p>Find my music on <a href="https://thinkplumfythoughts.bandcamp.com">Bandcamp</a></p>
+  <p>
+    Find my music on <IconAnchor
+      iconClass="fa-brands fa-bandcamp"
+      href="https://thinkplumfythoughts.bandcamp.com"
+      anchorText="Bandcamp"
+    />
+  </p>
 
   <p>
     In the before times, I played drums in a couple bands, and dabbled with making electronic music
@@ -30,7 +40,7 @@
     books.
   </p>
 
-  <h1>Albums</h1>
+  <h3>Albums</h3>
   <p>
     My first (and, so far, only) album, <a
       href="https://thinkplumfythoughts.bandcamp.com/album/a-chronology-of-learning-to-make-music"
@@ -42,6 +52,7 @@
     I've come.
   </p>
   <iframe
+    class="mx-auto my-0 w-80 border-0 pt-4"
     title="An embedded Bandcamp music player for my Album 'a chronology of learning to make music'"
     src="https://bandcamp.com/EmbeddedPlayer/album=1382719570/size=large/bgcol=ffffff/linkcol=0687f5/transparent=true/"
     seamless
@@ -50,9 +61,6 @@
 
 <style>
   iframe {
-    border: 0;
-    width: 350px;
     height: 588px;
-    margin: 0 auto;
   }
 </style>

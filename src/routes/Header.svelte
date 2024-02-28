@@ -3,15 +3,15 @@
   import { LightSwitch, TabGroup, TabAnchor } from '@skeletonlabs/skeleton'
 
   const pageList = [
-    { name: 'Music', path: '/music', icon: "fa-music" },
-    { name: 'Photos', path: '/photos', icon: "fa-camera" },
-    { name: 'Contact', path: '/contact', icon: "fa-address-book" },
+    { name: 'Music', path: '/music', icon: 'fa-music' },
+    { name: 'Photos', path: '/photos', icon: 'fa-camera' },
+    { name: 'Contact', path: '/contact', icon: 'fa-address-book' }
   ]
 
   const faStyle = 'fa-solid'
   function styledFaIcon(faIcon: string): string {
-      return `${faStyle} ${faIcon}`
-    }
+    return `${faStyle} ${faIcon}`
+  }
 </script>
 
 <header class="flex justify-between">
@@ -25,22 +25,20 @@
     class="bg-surface-100-800-token w-full"
   >
     <TabAnchor href="/" selected={$page.url.pathname === '/'}>
-      <svelte:fragment slot="lead"><i class={styledFaIcon("fa-house")}></i></svelte:fragment>
+      <svelte:fragment slot="lead"><i class={styledFaIcon('fa-house')}></i></svelte:fragment>
       <span>Home</span>
     </TabAnchor>
     {#each pageList as { name, path, icon } (name)}
-      <TabAnchor
-      href={path}
-      selected={$page.url.pathname.startsWith(path)}>
+      <TabAnchor href={path} selected={$page.url.pathname.startsWith(path)}>
         <svelte:fragment slot="lead"><i class={styledFaIcon(icon)}></i></svelte:fragment>
         <span>{name}</span>
       </TabAnchor>
     {/each}
 
-  <div class="flex">
-    <div class="mr-0 sm:mr-4 lg:mr-0 flex h-full w-full items-center justify-center">
-      <LightSwitch />
+    <div class="flex">
+      <div class="mx-1 flex h-full w-full items-center justify-center sm:mx-4 lg:mx-1">
+        <LightSwitch />
+      </div>
     </div>
-  </div>
   </TabGroup>
 </header>

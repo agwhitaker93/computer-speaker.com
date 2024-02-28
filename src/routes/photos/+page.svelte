@@ -3,35 +3,24 @@
   <meta name="description" content="My photos" />
 </svelte:head>
 
-<div class="text-column">
+<div class="flex flex-1 flex-col items-center justify-center">
   <p>
     You can find a gallery of my photos at <a href="https://gallery.computer-speaker.com"
       >gallery.computer-speaker.com</a
     >, generated with <a href="https://thumbsup.github.io/">thumbsup</a>
   </p>
-  <p></p>
 </div>
 
-<div class="iframe-container">
-  <iframe title="An embedded view of my photo gallery" src="https://gallery.computer-speaker.com"
+<div class="iframe-container relative w-full overflow-hidden">
+  <iframe
+    class="absolute bottom-0 left-0 right-0 top-0 h-full w-full border-0 bg-white"
+    title="An embedded view of my photo gallery"
+    src="https://gallery.computer-speaker.com"
   ></iframe>
 </div>
 
 <style>
   .iframe-container {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
     padding-top: 70%;
-  }
-  iframe {
-    border: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
   }
 </style>

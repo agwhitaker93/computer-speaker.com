@@ -1,5 +1,4 @@
 <script>
-  import Counter from './Counter.svelte'
   import header from '$lib/images/header.png'
 </script>
 
@@ -8,15 +7,19 @@
   <meta name="description" content="Personal website of Andrew Whitaker" />
 </svelte:head>
 
-<section>
+<section class="flex flex-1 flex-col items-center justify-center">
   <h1>Hello!</h1>
-  <div class="header">
+  <div class="header relative block h-0 w-full p-0">
     <picture>
-      <img src={header} alt="A quiet city road" />
+      <img
+        src={header}
+        class="absolute top-0 block h-full w-full rounded-lg drop-shadow-lg"
+        alt="A quiet city road"
+      />
     </picture>
   </div>
 
-  <h2>I'm Andrew!</h2>
+  <h3 class="mt-4">I'm Andrew!</h3>
   <p>I write code for a living, and I have a great time doing it!</p>
   <p>
     Most of the code I write these days is JavaScript for Cloudflare Workers and helper utilities at
@@ -46,36 +49,10 @@
     enjoy Clojure's syntax, but often feel like I'm not quite smart enough to take advantage of the
     more advanced features it provides.
   </p>
-
-  <Counter />
 </section>
 
 <style>
-  section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex: 0.6;
-  }
-
-  h1 {
-    width: 100%;
-  }
-
   .header {
-    display: block;
-    position: relative;
-    width: 100%;
-    height: 0;
     padding: 0 0 calc(100% * 350 / 750) 0;
-  }
-
-  .header img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    display: block;
   }
 </style>

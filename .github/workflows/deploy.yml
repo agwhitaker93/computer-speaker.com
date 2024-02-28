@@ -7,6 +7,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Fail if deploying main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          echo "Please deploy a tag instead of main"
+          exit 1
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Set variables
@@ -20,7 +25,15 @@ jobs:
           bun-version: ${{ steps.vars.outputs.bun_version }}
       - name: Install dependencies
         run: bun install
+      - name: Deploy branch to CF Pages
+        if: ${{ !startsWith(github.ref, 'ref/tags') }}
+        run: bun run pages:deploy-branch
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          BRANCH: ${{ github.ref_name }}
       - name: Deploy to CF Pages
+        if: ${{ startsWith(github.ref, 'ref/tags') }}
         run: bun run pages:deploy
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

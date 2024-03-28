@@ -59,4 +59,4 @@ jobs:
           git config --global user.name "${{github.triggering_actor}}"
           git config --global user.email "${{github.actor}}@users.noreply.github.com"
           npm version patch -m 'Bump version to %s [skip ci]'
-          git push --no-verify --tags
+          git push --no-verify --all

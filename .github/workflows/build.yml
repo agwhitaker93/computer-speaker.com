@@ -27,9 +27,9 @@ jobs:
           bun-version: ${{ steps.vars.outputs.bun_version }}
       - name: Install dependencies
         run: bun install
-      - name: Cache stuff
+      - name: Cache Playwright
         if: matrix.job == 'test'
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           key: build-test-${{ hashFiles('bun.lockb') }}
           path: |

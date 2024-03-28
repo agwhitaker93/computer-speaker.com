@@ -9,11 +9,11 @@
 
 <section class="flex flex-1 flex-col items-center justify-center">
   <h1>Hello!</h1>
-  <div class="header relative block h-0 w-full p-0">
+  <div class="hero">
     <picture>
       <img
         src={header}
-        class="absolute top-0 block h-full w-full rounded-lg drop-shadow-lg"
+        class="rounded-lg drop-shadow-lg"
         alt="A quiet city road"
       />
     </picture>
@@ -50,9 +50,3 @@
     more advanced features it provides.
   </p>
 </section>
-
-<style>
-  .header {
-    padding: 0 0 calc(100% * 350 / 750) 0;
-  }
-</style>

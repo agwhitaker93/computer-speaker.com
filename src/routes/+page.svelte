@@ -11,11 +11,7 @@
   <h1>Hello!</h1>
   <div class="hero">
     <picture>
-      <img
-        src={header}
-        class="rounded-lg drop-shadow-lg"
-        alt="A quiet city road"
-      />
+      <img src={header} class="rounded-lg drop-shadow-lg" alt="A quiet city road" />
     </picture>
   </div>
 

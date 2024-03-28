@@ -39,3 +39,24 @@ jobs:
         run: bunx playwright install
       - name: Run build check
         run: bun run ${{ matrix.job }}
+
+  tag-version:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'latest'
+      - name: Tag new version
+        run: |
+          git reset --hard
+          git config --global user.name "${{github.triggering_actor}}"
+          git config --global user.email "${{github.actor}}@users.noreply.github.com"
+          npm version patch -m 'Bump version to %s [skip ci]'
+          PACKAGE_VERSION=$(npm pkg get version | sed 's/"//g"')
+          git tag "v${PACKAGE_VERSION}"
+          git push --no-verify --tags

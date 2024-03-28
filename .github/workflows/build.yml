@@ -27,6 +27,13 @@ jobs:
           bun-version: ${{ steps.vars.outputs.bun_version }}
       - name: Install dependencies
         run: bun install
+      - name: Cache Playwright
+        if: matrix.job == 'test'
+        uses: actions/cache@v4
+        with:
+          key: playwright-cache
+          path: |
+            ~/.cache
       - name: Set Playwright up
         if: matrix.job == 'test'
         run: bunx playwright install

@@ -1,8 +1,8 @@
 name: Deploy
 run-name: >-
   ${{ github.ref == 'refs/heads/main'
-    && format('Live deploying {0}', github.ref_name)
-    || format('Branch deploying {0}', github.ref_name) }}
+    && format('Live deploying {0}, {1}', github.ref_name, github.ref)
+    || format('Branch deploying {0}, {1}', github.ref_name, github.ref) }}
 
 on:
   workflow_dispatch:
